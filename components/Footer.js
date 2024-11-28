@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="relative py-20 flex flex-col items-center overflow-hidden md:py-40 bg-gradient-radial from-gray-600 via-gray-800 to-black">
+    <footer className="relative py-20 flex flex-col items-center overflow-hidden md:py-40 bg-gradient-radial from-gray-500 via-gray-800 to-gray-950">
       <div className="relative z-[1] container m-auto px-6 md:px-12">
         <div className="m-auto md:w-10/12 lg:w-8/12 xl:w-6/12">
           <div className="flex flex-wrap items-center justify-between md:flex-nowrap">
