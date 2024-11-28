@@ -3,16 +3,19 @@ import styled from 'styled-components';
 
 const Test = () => {
   return (
-    <StyledWrapper className=" bg-white focus:ring-gray-100 justify-center text-black text-center">
+    <StyledWrapper className="bg-white justify-center text-center">
       <button className="btn">Take a free test now!</button>
     </StyledWrapper>
   );
 }
 
 const StyledWrapper = styled.div`
+  padding: 2rem;
+  
   .btn {
     position: relative;
     font-size: 17px;
+    font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
     padding: 1em 2.5em;
@@ -22,9 +25,9 @@ const StyledWrapper = styled.div`
     transition: all 0.2s;
     border: none;
     font-family: inherit;
-    font-weight: 500;
-    color: black;
-    background-color: white;
+    color: white;
+    background-color: black;
+    z-index: 1;
   }
 
   .btn:hover {
@@ -51,7 +54,7 @@ const StyledWrapper = styled.div`
   }
 
   .btn::after {
-    background-color: #fff;
+    background-color: #050505;
   }
 
   .btn:hover::after {

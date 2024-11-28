@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const Button = () => {
+const Login = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -13,13 +13,13 @@ const Button = () => {
       {isOpen && (
         <ModalOverlay>
           <ModalContent>
-            <h2 className='text-black'>Iniciar Sesión</h2>
+            <h2>Iniciar Sesión</h2>
             <form>
               <input type="email" placeholder="Email" />
               <input type="password" placeholder="Contraseña" />
-              <button className='text-black' type="submit">Entrar</button>
+              <button type="submit" className="submit-btn">Entrar</button>
             </form>
-            <CloseButton className='text-black' onClick={() => setIsOpen(false)}>×</CloseButton>
+            <CloseButton onClick={() => setIsOpen(false)}>×</CloseButton>
           </ModalContent>
         </ModalOverlay>
       )}
@@ -43,6 +43,7 @@ const StyledWrapper = styled.div`
     font-weight: 500;
     color: black;
     background-color: white;
+    z-index: 1;
   }
 
   .btn:hover {
@@ -113,6 +114,19 @@ const ModalContent = styled.div`
       border: 1px solid #ccc;
       border-radius: 5px;
     }
+
+    .submit-btn {
+      padding: 0.5rem;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      
+      &:hover {
+        background-color: #333;
+      }
+    }
   }
 `;
 
@@ -126,4 +140,4 @@ const CloseButton = styled.button`
   cursor: pointer;
 `;
 
-export default Button;
+export default Login;

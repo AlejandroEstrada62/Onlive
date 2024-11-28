@@ -3,6 +3,8 @@ import Navbar from "@/components/Navbar";
 import Section from "@/components/Section";
 import Stats from "@/components/Stats";
 import Test from "@/components/Test";
+import Team from "@/components/Team";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -12,6 +14,8 @@ export default function Home() {
     <Section/>
     <Stats/>
     <Test/>
+    <Team/>
+    <Footer/>
     </div>
   );
 }
