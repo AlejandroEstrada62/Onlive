@@ -13,13 +13,18 @@ const Login = () => {
       {isOpen && (
         <ModalOverlay>
           <ModalContent>
-            <h2>Iniciar Sesión</h2>
+            <h2 className='text-black'>Iniciar Sesión</h2>
             <form>
-              <input type="email" placeholder="Email" />
-              <input type="password" placeholder="Contraseña" />
-              <button type="submit" className="submit-btn">Entrar</button>
+              <input className='text-black' type="email" placeholder="Email" />
+              <input className='text-black' type="password" placeholder="Contraseña" />
+              <a
+                href="/Dashboard"
+                rel="noopener noreferrer"
+                className="submit-btn">
+                  Entrar
+              </a>
             </form>
-            <CloseButton onClick={() => setIsOpen(false)}>×</CloseButton>
+            <CloseButton className ='text-black' onClick={() => setIsOpen(false)}>×</CloseButton>
           </ModalContent>
         </ModalOverlay>
       )}
@@ -28,6 +33,9 @@ const Login = () => {
 }
 
 const StyledWrapper = styled.div`
+  display: block;
+  position: relative;
+  
   .btn {
     position: relative;
     font-size: 17px;
@@ -43,7 +51,8 @@ const StyledWrapper = styled.div`
     font-weight: 500;
     color: black;
     background-color: white;
-    z-index: 1;
+    z-index: 999;
+    isolation: isolate;
   }
 
   .btn:hover {

@@ -11,6 +11,9 @@ const Test = () => {
 
 const StyledWrapper = styled.div`
   padding: 2rem;
+  background-color: white;
+  position: relative;
+  display: block;
   
   .btn {
     position: relative;
@@ -27,7 +30,8 @@ const StyledWrapper = styled.div`
     font-family: inherit;
     color: white;
     background-color: black;
-    z-index: 1;
+    z-index: 999;
+    isolation: isolate;
   }
 
   .btn:hover {
@@ -51,15 +55,13 @@ const StyledWrapper = styled.div`
     left: 0;
     z-index: -1;
     transition: all 0.4s;
-  }
-
-  .btn::after {
     background-color: #050505;
   }
 
   .btn:hover::after {
     transform: scaleX(1.4) scaleY(1.6);
     opacity: 0;
-  }`;
+  }
+`;
 
 export default Test;
