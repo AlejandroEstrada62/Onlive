@@ -50,9 +50,7 @@ export default function Example() {
             {features.map((feature) => (
               <div key={feature.name} className="relative pl-16">
                 <dt className="text-base/7 font-semibold text-gray-900">
-                  <div className="absolute left-0 top-0 flex size-10 items-center justify-center rounded-lg bg-indigo-600">
-                    <feature.icon aria-hidden="true" className="size-6 text-white" />
-                  </div>
+                  <input type="checkbox" className="absolute left-0 top-0 h-6 w-6 rounded-full border-gray-300 text-black focus:ring-black" />
                   {feature.name}
                 </dt>
                 <dd className="mt-2 text-base/7 text-gray-600">{feature.description}</dd>

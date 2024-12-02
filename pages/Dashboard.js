@@ -13,7 +13,7 @@ const tiers = [
   {
     id: 'tier-hobby',
     href: '/diario',
-    priceMonthly: 'Diario',
+    priceMonthly: 'Diary',
     description: "Record of your day to day, as a warrior of this battle.",
   },
   {

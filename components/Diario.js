@@ -1,66 +1,80 @@
-import { ArrowPathIcon, CloudArrowUpIcon, FingerPrintIcon, LockClosedIcon } from '@heroicons/react/24/outline'
+import React, { useState } from 'react';
 
-const features = [
-  {
-    name: 'Read',
-    description:
-      'read chapter 3 of the book the little prince of sep so you can see what poor is.',
-    icon: CloudArrowUpIcon,
-  },
-  {
-    name: 'CLass',
-    description:
-      'watch the pre-recorded video by your advisor and reflect on it, write in your journal.',
-    icon: LockClosedIcon,
-  },
-  {
-    name: 'write a diary',
-    description:
-      'write in your journal your day to day, if you can write a problem and explain it later in the session, you have 50 percent of the problem solved, detail your reflections in it.',
-    icon: ArrowPathIcon,
-  },
-  {
-    name: 'Take a break',
-    description:
-      'take rest, sleep vitals to keep one full life, haz lo que te guste, si no encuentra algo? sólo descansa viendo carefulmente algo lindo como el cielo.',
-    icon: FingerPrintIcon,
-  },
-  {
-    name: 'set an alarm',
-    description:
-      'set your alarms to do all your tasks on time and in form, it is good to have a routine, just don´t forget that some routines must become hobbies at some point.',
-    icon: FingerPrintIcon,
-  },
-]
+const AddNote = () => {
+  const [notes, setNotes] = useState([]);
+  const [noteText, setNoteText] = useState('');
+  const [noteDate, setNoteDate] = useState('');
 
-export default function Example() {
+  const handleAddNote = () => {
+    if (!noteText || !noteDate) {
+      alert('Por favor, completa todos los campos.');
+      return;
+    }
+
+    const newNote = {
+      id: Date.now(),
+      text: noteText,
+      date: new Date(noteDate),
+    };
+
+    setNotes([...notes, newNote]);
+    setNoteText('');
+    setNoteDate('');
+  };
+
   return (
-    <div className="bg-white py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:text-center">
+    <div className="min-h-screen bg-white p-4">
+      <div className="mb-4">
+      <div className="mx-auto max-w-2xl lg:text-center">
           <p className="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl lg:text-balance">
-            Activities
+            Diary
           </p>
           <p className="mt-6 text-lg/8 text-gray-600">
-          Exercises commissioned by a professional.
+          Record of your day to day, as a warrior of this battle.
           </p>
         </div>
-        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-          <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-            {features.map((feature) => (
-              <div key={feature.name} className="relative pl-16">
-                <dt className="text-base/7 font-semibold text-gray-900">
-                  <div className="absolute left-0 top-0 flex size-10 items-center justify-center rounded-lg bg-indigo-600">
-                    <feature.icon aria-hidden="true" className="size-6 text-white" />
-                  </div>
-                  {feature.name}
-                </dt>
-                <dd className="mt-2 text-base/7 text-gray-600">{feature.description}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
+        <label htmlFor="noteDate" className="block text-sm font-medium text-black">
+          Date
+        </label>
+        <input
+          type="date"
+          id="noteDate"
+          value={noteDate}
+          onChange={(e) => setNoteDate(e.target.value)}
+          className="mt-1 block w-full p-2 border text-black border-gray-300 rounded shadow-sm focus:ring-black focus:border-black"
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="noteText" className="block text-sm font-medium text-black">
+          Note
+        </label>
+        <textarea
+          id="noteText"
+          value={noteText}
+          onChange={(e) => setNoteText(e.target.value)}
+          rows={3}
+          placeholder="Escribe tu nota aquí..."
+          className="mt-1 block w-full p-2 border text-black border-black rounded shadow-sm focus:ring-black focus:border-black"
+        />
+      </div>
+      <button
+        onClick={handleAddNote}
+        className="bg-black text-white py-2 px-4 rounded shadow hover:bg-black focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+      >
+        Done
+      </button>
+
+      {/* notas enlistadas en pantalla */}
+      <div className="mt-6 space-y-4">
+        {notes.map((note) => (
+          <div key={note.id} className="bg-stone-700 p-4 rounded shadow">
+            <h3 className="text-lg font-bold">{note.date.toLocaleDateString()}</h3>
+            <p className="text-sm">{note.text}</p>
+          </div>
+        ))}
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default AddNote;
