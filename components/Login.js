@@ -76,9 +76,6 @@ const StyledWrapper = styled.div`
     left: 0;
     z-index: -1;
     transition: all 0.4s;
-  }
-
-  .btn::after {
     background-color: #fff;
   }
 

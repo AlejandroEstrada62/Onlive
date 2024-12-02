@@ -2,25 +2,48 @@ import Image from "next/image";
 import TeamSection from "@/components/Team";
 import Navbar from "@/components/Navbar";
 import Link from 'next/link';
+import Footer from "@/components/Footer";
 
 const tiers = [
   {
     id: 'tier-basic',
     href: '/actividades',
     priceMonthly: 'Activites',
-    description: 'Exercises commissioned by a professional.',
+    description: (
+      <ul>
+        <li>Mindfulness meditation</li>
+        <li>Breathing exercises</li>
+        <li>Positive affirmations</li>
+        <li>Non-judgmental thinking</li>
+      </ul>
+    ),
   },
   {
     id: 'tier-hobby',
     href: '/diario',
     priceMonthly: 'Diary',
-    description: "Record of your day to day, as a warrior of this battle.",
+    description: (
+      <ul>
+        <li>Private entries</li>
+        <li>Public entries</li>
+        <li>Fully customizable</li>
+        <li>PGP encrypted</li>
+      </ul>
+    ),
   },
   {
     id: 'tier-enterprise',
     href: '/sesion',
     priceMonthly: 'Sesion',
-    description: 'Stay connected to what´s truly important.',
+    description: (
+      <ul>
+        <li>Certified professionals</li>
+        <li>Capable volunteers</li>
+        <li>Group therapy</li>
+        <li>Pair therapy</li>
+
+      </ul>
+    ),
   },
 ]
 
@@ -98,17 +121,17 @@ export default function Header() {
                     'mt-8 block rounded-md px-3.5 py-2.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10',
                   )}
                 >
-                  Get started today
+                  Start
                 </Link>
               </div>
             ))}
           </div>
         </div>
-
         <div className="basis-full"></div>
         <br/>
         <TeamSection />
       </div>
+      <Footer />
     </>
   );
 }

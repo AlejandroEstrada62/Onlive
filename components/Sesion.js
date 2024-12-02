@@ -1,62 +1,106 @@
-import { ArrowPathIcon, CloudArrowUpIcon, FingerPrintIcon, LockClosedIcon } from '@heroicons/react/24/outline'
 
-const features = [
+import Navbar from "@/components/Navbar";
+import Link from 'next/link';
+import Footer from "@/components/Footer";
+
+const tiers = [
   {
-    name: 'Push to deploy',
-    description:
-      'Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.',
-    icon: CloudArrowUpIcon,
+    id: 'tier-basic',
+    href: '/actividades',
+    priceMonthly: 'Pair therapy',
   },
   {
-    name: 'SSL certificates',
-    description:
-      'Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.',
-    icon: LockClosedIcon,
+    id: 'tier-hobby',
+    href: '/diario',
+    priceMonthly: 'Group Therapy',
   },
   {
-    name: 'Simple queues',
-    description:
-      'Quisque est vel vulputate cursus. Risus proin diam nunc commodo. Lobortis auctor congue commodo diam neque.',
-    icon: ArrowPathIcon,
+    id: 'tier-enterprise',
+    href: '/sesion',
+    priceMonthly: 'Past Sessions',
   },
   {
-    name: 'Advanced security',
-    description:
-      'Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.',
-    icon: FingerPrintIcon,
+    id: 'tier-enterprise',
+    href: '/sesion',
+    priceMonthly: 'Schedule an appoinment',
   },
 ]
 
-export default function Example() {
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
+
+export default function Header() {
   return (
-    <div className="bg-white py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:text-center">
-          <h2 className="text-base/7 font-semibold text-indigo-600">Deploy faster</h2>
-          <p className="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl lg:text-balance">
-            Everything you need to deploy your app
-          </p>
-          <p className="mt-6 text-lg/8 text-gray-600">
-            Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
-            pulvinar et feugiat blandit at. In mi viverra elit nunc.
-          </p>
-        </div>
-        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-          <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-            {features.map((feature) => (
-              <div key={feature.name} className="relative pl-16">
-                <dt className="text-base/7 font-semibold text-gray-900">
-                  <div className="absolute left-0 top-0 flex size-10 items-center justify-center rounded-lg bg-indigo-600">
-                    <feature.icon aria-hidden="true" className="size-6 text-white" />
-                  </div>
-                  {feature.name}
-                </dt>
-                <dd className="mt-2 text-base/7 text-gray-600">{feature.description}</dd>
+    <>
+      <Navbar />
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+        {/* Pricing Section */}
+        <div className="r w-full bg-gray-100 px-6 py-24 sm:py-32 lg:px-8">
+          <div aria-hidden="true" className="absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl">
+            <div
+              style={{
+                clipPath:
+                  'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+              }}
+              className="mx-auto aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30"
+            />
+          </div>
+          <div className="mx-auto max-w-4xl text-center">
+            <p className="mt-2 text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-6xl">
+              SESIONS
+            </p>
+          </div>
+          <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 gap-8 items-center lg:max-w-7xl lg:grid-cols-3">
+            {tiers.map((tier, tierIdx) => (
+              <div
+                key={tier.id}
+                className={classNames(
+                  'bg-white shadow-md h-full',
+                  'rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10'
+                )}
+              >
+                <h3
+                  id={tier.id}
+                  className={classNames(tier.featured ? 'text-black' : 'text-black', 'text-base/7 font-semibold')}
+                >
+                  {tier.name}
+                </h3>
+                <p className="mt-4 flex items-baseline gap-x-2">
+                  <span
+                    className={classNames(
+                      tier.featured ? 'text-white' : 'text-gray-900',
+                      'text-5xl font-semibold tracking-tight',
+                    )}
+                  >
+                    {tier.priceMonthly}
+                  </span>
+                  <span className={classNames(tier.featured ? 'text-gray-400' : 'text-gray-500', 'text-base')}></span>
+                </p>
+                <p className={classNames(tier.featured ? 'text-gray-300' : 'text-gray-600', 'mt-6 text-base/7')}>
+                  {tier.description}
+                </p>
+                <Link
+                  href={tier.href}
+                  target="_blank"
+                  aria-describedby={tier.id}
+                  className={classNames(
+                    tier.featured
+                      ? 'bg-black text-white shadow-sm hover:bg-black focus-visible:outline-black'
+                      : 'text-black ring-1 ring-inset ring-black hover:ring-black focus-visible:outline-black',
+                    'mt-8 block rounded-md px-3.5 py-2.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10',
+                  )}
+                >
+                  Go
+                </Link>
               </div>
             ))}
-          </dl>
+          </div>
         </div>
+        <div className="basis-full"></div>
+        <br/>
       </div>
-    </div>
-  )
+      <Footer />
+    </>
+  );
 }
