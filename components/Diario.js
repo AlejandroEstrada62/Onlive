@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const AddNote = () => {
   const [notes, setNotes] = useState([]);
@@ -15,6 +18,7 @@ const AddNote = () => {
       id: Date.now(),
       text: noteText,
       date: new Date(noteDate),
+      time: new Date().toLocaleTimeString(),
     };
 
     setNotes([...notes, newNote]);
@@ -23,6 +27,8 @@ const AddNote = () => {
   };
 
   return (
+    <>
+      <Navbar />
     <div className="min-h-screen bg-white p-4">
       <div className="mb-4">
       <div className="mx-auto max-w-2xl lg:text-center">
@@ -65,15 +71,26 @@ const AddNote = () => {
       </button>
 
       {/* notas enlistadas en pantalla */}
-      <div className="mt-6 space-y-4">
-        {notes.map((note) => (
-          <div key={note.id} className="bg-stone-700 p-4 rounded shadow">
-            <h3 className="text-lg font-bold">{note.date.toLocaleDateString()}</h3>
-            <p className="text-sm">{note.text}</p>
-          </div>
-        ))}
+      <div className="mt-6 flex">
+        <div className="space-y-4 w-2/3">
+          {notes.map((note) => (
+            <div key={note.id} className="bg-stone-700 p-4 rounded shadow">
+              <h3 className="text-lg font-bold">{note.date.toLocaleDateString()} {note.time}</h3>
+              <p className="text-sm">{note.text}</p>
+            </div>
+          ))}
+        </div>
+        <div className="w-1/3 max-6">
+          <Image
+            src="/grafica.jpg"
+            width={600}
+            height={600}
+            className="float-right"/>
+        </div>
       </div>
     </div>
+      <Footer />
+  </>
   );
 };
 
