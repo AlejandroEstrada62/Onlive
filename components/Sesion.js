@@ -83,7 +83,7 @@ export default function Header() {
                     'mt-8 block rounded-md px-3.5 py-2.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10',
                   )}
                 >
-                  {tierIdx === 0 ? 'Join now.' : tierIdx === 1 ? 'Join now.' : tierIdx === 2 ? 'View recordings.' : 'View calendar.'}
+                  {tierIdx === 0 ? 'Join now.' : tierIdx === 1 ? 'Join now.' : tierIdx === 2 ? 'View recordings.' : 'View calendar.'}
                 </a>
               </div>
             ))}

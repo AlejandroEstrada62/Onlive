@@ -6,44 +6,25 @@ import Footer from "@/components/Footer";
 
 const tiers = [
   {
-    id: 'tier-basic',
+    id: 'activity',
     href: '/actividades',
-    priceMonthly: 'Activites',
-    description: (
-      <ul>
-        <li>Mindfulness meditation</li>
-        <li>Breathing exercises</li>
-        <li>Positive affirmations</li>
-        <li>Non-judgmental thinking</li>
-      </ul>
-    ),
+    priceMonthly: 'Activities',
+    features: ['Mindfulness meditation', 'Breathing exercises', 'Positive affirmations', 'Non-judgmental thinking'],
+    featured: false,
   },
   {
-    id: 'tier-hobby',
+    id: 'diary',
     href: '/diario',
     priceMonthly: 'Diary',
-    description: (
-      <ul>
-        <li>Private entries</li>
-        <li>Public entries</li>
-        <li>Fully customizable</li>
-        <li>PGP encrypted</li>
-      </ul>
-    ),
+    features: ['Private entries', 'Public entries', 'Fully customizable', 'PGP encrypted'],
+    featured: false,
   },
   {
-    id: 'tier-enterprise',
+    id: 'sesion',
     href: '/sesion',
     priceMonthly: 'Sesion',
-    description: (
-      <ul>
-        <li>Certified professionals</li>
-        <li>Capable volunteers</li>
-        <li>Group therapy</li>
-        <li>Pair therapy</li>
-
-      </ul>
-    ),
+    features: ['Certified professionals', 'Capable volunteers', 'Group therapy', 'Pair therapy'],
+    featured: false,
   },
 ]
 
@@ -110,6 +91,11 @@ export default function Header() {
                 <p className={classNames(tier.featured ? 'text-gray-300' : 'text-gray-600', 'mt-6 text-base/7')}>
                   {tier.description}
                 </p>
+                <ul className="mt-4 list-disc list-inside">
+                  {tier.features.map((feature, index) => (
+                    <li key={index} className="text-gray-600">{feature}</li>
+                  ))}
+                </ul>
                 <Link
                   href={tier.href}
                   target="_blank"
