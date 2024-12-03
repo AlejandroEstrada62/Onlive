@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 const Login = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,13 +18,12 @@ const Login = () => {
             <form>
               <input className='text-black' type="email" placeholder="Email" />
               <input className='text-black' type="password" placeholder="Contraseña" />
-              <button
+              <Link
                 href="/Dashboard"
-                type="submit"
                 className="submit-btn"
                 rel="noopener noreferrer">
                   Entrar
-              </button>
+              </Link>
             </form>
             <CloseButton className ='text-black' onClick={() => setIsOpen(false)}>×</CloseButton>
           </ModalContent>
