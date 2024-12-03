@@ -14,7 +14,8 @@ const StyledWrapper = styled.div`
   background-color: white;
   position: relative;
   display: block;
-  
+  border: 1px ;
+
   .btn {
     position: relative;
     font-size: 17px;

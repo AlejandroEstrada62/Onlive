@@ -17,12 +17,13 @@ const Login = () => {
             <form>
               <input className='text-black' type="email" placeholder="Email" />
               <input className='text-black' type="password" placeholder="Contraseña" />
-              <a
+              <button
                 href="/Dashboard"
-                rel="noopener noreferrer"
-                className="submit-btn">
+                type="submit"
+                className="submit-btn"
+                rel="noopener noreferrer">
                   Entrar
-              </a>
+              </button>
             </form>
             <CloseButton className ='text-black' onClick={() => setIsOpen(false)}>×</CloseButton>
           </ModalContent>

@@ -1,27 +1,21 @@
-
 import Navbar from "@/components/Navbar";
-import Link from 'next/link';
 import Footer from "@/components/Footer";
 
 const tiers = [
   {
     id: 'tier-basic',
-    href: '/actividades',
     priceMonthly: 'Pair therapy',
   },
   {
     id: 'tier-hobby',
-    href: '/diario',
     priceMonthly: 'Group Therapy',
   },
   {
     id: 'tier-enterprise',
-    href: '/sesion',
     priceMonthly: 'Past Sessions',
   },
   {
     id: 'tier-enterprise',
-    href: '/sesion',
     priceMonthly: 'Schedule an appoinment',
   },
 ]
@@ -51,7 +45,7 @@ export default function Header() {
               SESIONS
             </p>
           </div>
-          <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 gap-8 items-center lg:max-w-7xl lg:grid-cols-3">
+          <div className="mx-auto mt-16 grid max-w-lg grid-cols-2 gap-8 items-center lg:max-w-7xl lg:grid-cols-2">
             {tiers.map((tier, tierIdx) => (
               <div
                 key={tier.id}
@@ -80,9 +74,7 @@ export default function Header() {
                 <p className={classNames(tier.featured ? 'text-gray-300' : 'text-gray-600', 'mt-6 text-base/7')}>
                   {tier.description}
                 </p>
-                <Link
-                  href={tier.href}
-                  target="_blank"
+                <a
                   aria-describedby={tier.id}
                   className={classNames(
                     tier.featured
@@ -91,8 +83,8 @@ export default function Header() {
                     'mt-8 block rounded-md px-3.5 py-2.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10',
                   )}
                 >
-                  Go
-                </Link>
+                  {tierIdx === 0 ? 'Join now.' : tierIdx === 1 ? 'Join now.' : tierIdx === 2 ? 'View recordings.' : 'View calendar.'}
+                </a>
               </div>
             ))}
           </div>
